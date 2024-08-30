@@ -2,13 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 function Home() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch('http://192.168.52.128:5000/api/videos');
+        const response = await fetch(`${backendUrl}/api/videos`);	
         const data = await response.json();
         setVideos(data);
       } catch (error) {
