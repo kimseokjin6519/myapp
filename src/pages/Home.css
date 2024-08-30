@@ -93,3 +93,27 @@
   padding: 10px;
   margin: 0;
 }
+
+.header__search {
+  width: 600px; /* Adjust width as needed */
+  padding: 10px; /* Optional: Add some padding */
+  font-size: 16px; /* Optional: Adjust font size for better readability */
+  border-radius: 0px;
+  border: 1px solid black;
+}
+
+/* Optionally adjust the button size */
+.header form button {
+  margin-left: 10px;
+  padding: 10px 20px; /* Adjust padding to make the button larger */
+  font-size: 16px; /* Match font size to input field */
+  border: 1px solid black;
+  border-radius: 0px;
+}
+
+/* Ensure form container can accommodate the wider input */
+.header form {
+  display: flex;
+  align-items: center; /* Align items vertically if needed */
+}
+
