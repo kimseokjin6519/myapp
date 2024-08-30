@@ -1,15 +1,24 @@
 // Home.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 
-const videos = [
-  { id: 1, title: 'Video 1', thumbnail: 'https://via.placeholder.com/320x180' },
-  { id: 2, title: 'Video 2', thumbnail: 'https://via.placeholder.com/320x180' },
-  { id: 3, title: 'Video 3', thumbnail: 'https://via.placeholder.com/320x180' },
-  // Add more video objects as needed
-];
-
 function Home() {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('http://192.168.52.128:5000/api/videos');
+        const data = await response.json();
+        setVideos(data);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
+
+    fetchVideos();
+  }, []);
+
   return (
     <div className="home">
       <header className="header">
@@ -33,7 +42,7 @@ function Home() {
         <main className="main">
           <div className="video-grid">
             {videos.map(video => (
-              <div key={video.id} className="video-card">
+              <div key={video._id} className="video-card">
                 <img src={video.thumbnail} alt={video.title} />
                 <h3>{video.title}</h3>
               </div>
