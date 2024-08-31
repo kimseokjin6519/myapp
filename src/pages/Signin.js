@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Signin.css'; // Import the CSS file for styling
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +13,7 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/signin', {
+      const response = await fetch(`${backendUrl}/api/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
