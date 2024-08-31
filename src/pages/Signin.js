@@ -29,6 +29,12 @@ function SignIn() {
       setEmail('');
       setPassword('');
       setError('');
+
+      // Wait 1 second then redirect
+      setTimeout(() => {
+        window.location.href = '/'; // Redirect to home page
+      }, 1000);
+
     } catch (err) {
       setError(err.message);
       setSuccess('');
