@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
@@ -41,7 +42,9 @@ function Home() {
           <button type="submit">Search</button>
         </form>
         <div className="header__icons">
-          <button>Sign In</button>
+	  <Link to="/signin">
+             <button>Sign In</button>
+	  </Link>
         </div>
       </header>
 
