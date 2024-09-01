@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
+import defaultProfilePic from '../assets/images/default_profile.jpg';
+
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function Home() {
   const [videos, setVideos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(defaultProfilePic); // State to hold the profile picture URL
 
   const fetchVideos = async (searchQuery = '') => {
     try {
@@ -36,6 +39,11 @@ function Home() {
       if (response.ok) {
         const data = await response.json();
         setIsLoggedIn(data.authenticated);
+
+        // Update the profile picture if authenticated
+        if (data.authenticated && data.profile_picture) {
+          setProfilePicture(data.profile_picture);
+        }
       } else {
         setIsLoggedIn(false);
       }
@@ -72,7 +80,11 @@ function Home() {
         <div className="header__icons">
           {isLoggedIn ? (
             <Link to="/profile">
-              <button>Profile</button>
+              <img
+                src={defaultProfilePic}
+                alt="Profile"
+                className="profile-pic"
+              />
             </Link>
           ) : (
             <Link to="/signin">
