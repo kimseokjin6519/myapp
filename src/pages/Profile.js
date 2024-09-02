@@ -1,39 +1,83 @@
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
 
-const Profile = () => {
-  // State variables for user info
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [profilePicture, setProfilePicture] = useState('');
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-  // Fetch user info from the backend (mocked for now)
+function Profile() {
+  const [profile, setProfile] = useState({
+    name: '',
+    email: '',
+    profile_picture: ''
+  });
+
+  const fetchProfile = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${backendUrl}/api/profile`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setProfile(data);
+      } else {
+        console.error('Failed to fetch profile');
+      }
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+    }
+  };
+
   useEffect(() => {
-    // Here you would fetch the data from your backend API
-    // For now, we'll just set some default values
-    // Example: const response = await fetch('/api/profile', { headers: { 'Authorization': `Bearer ${token}` } });
-    // const data = await response.json();
-    // setName(data.name);
-    // setEmail(data.email);
-    // setProfilePicture(data.profile_picture);
-
-    // Mocked data
-    setName('John Doe');
-    setEmail('john.doe@example.com');
-    setProfilePicture('https://via.placeholder.com/150'); // Placeholder image
+    fetchProfile();
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/'; // Redirect to home
+  };
 
   return (
     <div className="profile">
-      <div className="profile__picture">
-        <img src={profilePicture} alt="Profile" />
+      <h1 className="profile-header">Account Settings</h1>
+      
+      <div className="profile-item">
+        <label className="profile-label">Profile Picture</label>
+        <div className="profile-picture-container">
+          {profile.profile_picture ? (
+            <img
+              src={`data:image/jpeg;base64,${profile.profile_picture}`}
+              alt="Profile"
+              className="profile-picture"
+            />
+          ) : (
+            <div className="default-picture">No Picture</div>
+          )}
+        </div>
       </div>
-      <div className="profile__info">
-        <h1>{name}</h1>
-        <p>{email}</p>
+      
+      <div className="profile-item">
+        <label className="profile-label">Name</label>
+        <div className="profile-value">{profile.name || 'Not provided'}</div>
       </div>
+
+      <div className="profile-item">
+        <label className="profile-label">Email</label>
+        <div className="profile-value">{profile.email || 'Not provided'}</div>
+      </div>
+
+      <button className="logout-button" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
-};
+}
 
 export default Profile;
