@@ -15,9 +15,9 @@ function App() {
         <Route path="/about" element={<About />} />
 	<Route path="/signin" element={<Signin />} />
         <Route path="/profile" element={<Profile />} />
-	<Route path="/video/:id" element={<VideoPlayer />} />
+         <Route path="/video/:videoID" element={<VideoPlayer />} />
 
-{/* You can add more routes here */}
+        {/* You can add more routes here */}
 
       </Routes>
     </Router>
