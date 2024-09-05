@@ -1,0 +1,13 @@
+/* Container styling for iframe */
+.video-container {
+  text-align: center; /* Center the iframe if needed */
+  padding-top: 100px;
+}
+
+/* Styling for the YouTube iframe */
+.youtube-iframe {
+  border: 1px ; /* Black border with 4px thickness */
+  border-radius: 10px; /* Rounds the corners */
+  width: 560px; /* Set the width of the iframe */
+  height: 315px; /* Set the height of the iframe */
+}

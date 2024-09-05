@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
-
 import defaultProfilePic from '../assets/images/default_profile.jpg';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
@@ -10,7 +9,7 @@ function Home() {
   const [videos, setVideos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [profilePicture, setProfilePicture] = useState(defaultProfilePic); // State to hold the profile picture URL
+  const [profilePicture, setProfilePicture] = useState(defaultProfilePic);
 
   const fetchVideos = async (searchQuery = '') => {
     try {
@@ -40,7 +39,6 @@ function Home() {
         const data = await response.json();
         setIsLoggedIn(data.authenticated);
 
-        // Update the profile picture if authenticated
         if (data.authenticated && data.profile_picture) {
           setProfilePicture(data.profile_picture);
         }
@@ -54,8 +52,8 @@ function Home() {
   };
 
   useEffect(() => {
-    checkAuthStatus(); // Check token validity on page load
-    fetchVideos(); // Fetch videos on page load
+    checkAuthStatus();
+    fetchVideos();
   }, []);
 
   const handleSearch = (e) => {
@@ -81,7 +79,7 @@ function Home() {
           {isLoggedIn ? (
             <Link to="/profile">
               <img
-                src={defaultProfilePic}
+                src={profilePicture}
                 alt="Profile"
                 className="profile-pic"
               />
@@ -109,8 +107,10 @@ function Home() {
             {videos.length > 0 ? (
               videos.map(video => (
                 <div key={video._id} className="video-card">
-                  <img src={video.thumbnail} alt={video.title} />
-                  <h3>{video.title}</h3>
+                  <Link to={`/video/${video.videoID}`}>
+                    <img src={video.thumbnail} alt={video.title} />
+                    <h3>{video.title}</h3>
+                  </Link>
                 </div>
               ))
             ) : (

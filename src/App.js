@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Signin from './pages/Signin';
 import Profile from './pages/Profile';
+import VideoPlayer from './pages/VideoPlayer';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
         <Route path="/about" element={<About />} />
 	<Route path="/signin" element={<Signin />} />
         <Route path="/profile" element={<Profile />} />
+	<Route path="/video/:id" element={<VideoPlayer />} />
 
-        {/* You can add more routes here */}
+{/* You can add more routes here */}
 
       </Routes>
     </Router>
