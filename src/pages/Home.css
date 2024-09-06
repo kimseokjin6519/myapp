@@ -9,7 +9,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 
 .header__logo {
@@ -55,9 +55,35 @@ body {
 }
 
 .sidebar {
-  width: 200px; /* Adjust as needed */
-  background-color: #f0f0f0;
-  padding: 10px;
+  width: 160px; /* Sidebar width */
+  font-size: 16px;
+  margin-left: 10px;
+  background-color: #ffffff; /* White background */
+  padding: 10px; /* Space around the content */  
+  height: 100vh; /* Full height of the viewport */
+}
+
+.sidebar ul {
+  list-style-type: none; /* Removes bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+}
+
+.sidebar li {
+  padding: 5px 0; /* Vertical padding for list items */
+  margin: 0; /* Removes margin around items */
+  cursor: pointer; /* Pointer cursor on hover */
+  padding-left: 10px;
+}
+
+.sidebar li:last-child {
+  border-bottom: none; /* Remove border from the last item */
+}
+
+.sidebar li:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+  color: #000000; /* Black text on hover for better contrast */
+  border-radius: 10px;
 }
 
 .main {
