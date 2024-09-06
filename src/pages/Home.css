@@ -1,30 +1,32 @@
-.home {
-  font-family: Arial, sans-serif;
+/* General Styles */
+body {
+  margin: 0;
 }
 
+/* Header Styles */
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
 }
 
 .header__logo {
   font-size: 24px;
   font-weight: bold;
-  margin-right: auto;
+}
+
+.header form {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Allow form to take up space between logo and icons */
+  max-width: 500px; /* Optional: Limit search bar width */
+  margin: 0 auto; /* Center the form in the header */
 }
 
 .header__search {
-  padding: 5px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-}
-
-.header__search::placeholder {
-  color: #aaa;
+  width: 100%;
 }
 
 .header__icons {
@@ -32,24 +34,20 @@
   align-items: center;
 }
 
-.header__icons img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-left: 10px;
-}
-
 .header__icons button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #ff0000;
-  color: #fff;
-  cursor: pointer;
+  margin-left: 10px; /* Optional: Space between profile picture and sign-in button */
 }
 
-.header__icons button:hover {
-  background-color: #cc0000;
+.header__icons img {
+  border-radius: 50%;
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
+}
+
+/* Main Content Styles */
+.home {
+  display: flex;
+  flex-direction: column;
 }
 
 .home__content {
@@ -57,18 +55,9 @@
 }
 
 .sidebar {
-  width: 200px;
+  width: 200px; /* Adjust as needed */
+  background-color: #f0f0f0;
   padding: 10px;
-  background-color: #f4f4f4;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin: 10px 0;
 }
 
 .main {
@@ -79,41 +68,21 @@
 .video-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px;
+  gap: 10px;
 }
 
 .video-card a {
   text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit color from parent, so no color change */
+  color: inherit; /* Use the color of the parent element */
 }
 
 .video-card {
-  display: block;
   width: 200px;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-  background-color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 10px;
 }
 
 .video-card img {
   width: 100%;
-  display: block;
-}
-
-.video-card h3 {
-  margin: 0;
-  padding: 8px;
-  background-color: #f8f8f8;
-  text-align: center;
-  font-size: 12px;
-}
-
-.video-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: auto;
 }
