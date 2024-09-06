@@ -48,9 +48,9 @@ function VideoPlayer() {
             />
           </div>
           <div className="button-container">
-            <button onClick={() => window.history.back()} className="next-button">
+            <Link to="/" className="next-button">
               Back
-            </button>
+            </Link>
           </div>
         </div>
       ) : (
