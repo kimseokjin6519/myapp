@@ -65,7 +65,7 @@ function Home() {
   return (
     <div className="home">
       <header className="header">
-        <img src={youtubeLogo} />
+        <img src={youtubeLogo} alt = ""/>
         <form onSubmit={handleSearch}>
           <input
             className="header__search"
