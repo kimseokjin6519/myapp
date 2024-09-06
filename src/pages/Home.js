@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import defaultProfilePic from '../assets/images/default_profile.jpg';
+import youtubeLogo from '../assets/images/youtube-logo.png';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -64,7 +65,7 @@ function Home() {
   return (
     <div className="home">
       <header className="header">
-        <div className="header__logo">YouTube</div>
+        <img src={youtubeLogo} />
         <form onSubmit={handleSearch}>
           <input
             className="header__search"
