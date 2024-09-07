@@ -76,11 +76,11 @@ function Profile() {
             <form className="profile-form">
               <div className="profile-item">
                 <label className="profile-label">Name</label>
-                <input type="text" value={profile.name || 'Example User'} readOnly />
+                <input type="text" value={profile.name || 'Example User'}  />
               </div>
               <div className="profile-item">
                 <label className="profile-label">Email</label>
-                <input type="email" value={profile.email || 'user@example.com'} readOnly />
+                <input type="email" value={profile.email || 'user@example.com'}  />
               </div>
             </form>
             <button className="logout-button" onClick={handleLogout}>
