@@ -1,64 +1,133 @@
-.profile {
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-  margin-left: 100px;
+.profile-container {
+  display: flex;
+  font-family: Arial, sans-serif;
 }
 
-.profile-header {
-  font-size: 24px;
+.menu {
+  width: 220px;
+  border-right: 2px solid #ddd;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.menu button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.menu button.active, .menu button:hover {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.account-settings, .billing {
+  max-width: 800px;
+  margin: auto;
+}
+
+.section-header {
+  font-size: 28px;
   margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
 }
 
 .profile-item {
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Adjusted for spacing */
 }
 
 .profile-label {
   font-weight: bold;
-  display: block;
-  margin-bottom: 8px;
+  font-size: 18px;
+  display: block; /* Ensure label takes full width */
 }
 
 .profile-picture-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
+  margin-bottom: 20px;
 }
 
-.profile-picture {
+.profile-picture-container img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid #ddd;
 }
 
 .default-picture {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background-color: #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-}
-
-.profile-value {
   font-size: 16px;
 }
 
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: left;
+}
+
+.profile-form .profile-item {
+  margin-bottom: 10px;
+}
+
+.profile-form input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .logout-button {
-  padding: 10px 20px;
-  margin-top: 20px;
+  padding: 12px 24px;
+  margin-top: 30px;
   background-color: #0000CD;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
   background-color: #00008B;
+}
+
+.payment-placeholder {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-placeholder input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
 }

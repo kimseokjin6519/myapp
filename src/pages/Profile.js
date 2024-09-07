@@ -10,6 +10,8 @@ function Profile() {
     profile_picture: ''
   });
 
+  const [activeTab, setActiveTab] = useState('account');
+
   const fetchProfile = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -41,41 +43,63 @@ function Profile() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.href = '/'; // Redirect to home
+    window.location.href = '/';
   };
 
   return (
-    <div className="profile">
-      <h1 className="profile-header">Account Settings</h1>
-      
-      <div className="profile-item">
-        <label className="profile-label">Profile Picture</label>
-        <div className="profile-picture-container">
-          {profile.profile_picture ? (
-            <img
-              src={`data:image/jpeg;base64,${profile.profile_picture}`}
-              alt="Profile"
-              className="profile-picture"
-            />
-          ) : (
-            <div className="default-picture">No Picture</div>
-          )}
-        </div>
+    <div className="profile-container">
+      <div className="menu">
+        <button onClick={() => setActiveTab('account')} className={activeTab === 'account' ? 'active' : ''}>
+          Account Settings
+        </button>
+        <button onClick={() => setActiveTab('billing')} className={activeTab === 'billing' ? 'active' : ''}>
+          Billing and Payment
+        </button>
       </div>
-      
-      <div className="profile-item">
-        <label className="profile-label">Name</label>
-        <div className="profile-value">{profile.name || 'Not provided'}</div>
+      <div className="content">
+        {activeTab === 'account' ? (
+          <div className="account-settings">
+            <h1 className="section-header">Account Settings</h1>
+            <div className="profile-item">
+              <label className="profile-label">Profile Picture</label>
+              <div className="profile-picture-container">
+                {profile.profile_picture ? (
+                  <img
+                    src={`data:image/jpeg;base64,${profile.profile_picture}`}
+                    alt="Profile"
+                  />
+                ) : (
+                  <div className="default-picture">No Picture</div>
+                )}
+              </div>
+            </div>
+            <form className="profile-form">
+              <div className="profile-item">
+                <label className="profile-label">Name</label>
+                <input type="text" value={profile.name || 'Example User'} readOnly />
+              </div>
+              <div className="profile-item">
+                <label className="profile-label">Email</label>
+                <input type="email" value={profile.email || 'user@example.com'} readOnly />
+              </div>
+            </form>
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="billing">
+            <h1 className="section-header">Billing and Payment</h1>
+            <div className="payment-placeholder">
+              {/* Placeholder for payment system */}
+              <p>Payment System Placeholder</p>
+              <input type="text" placeholder="Credit Card Number" />
+              <input type="text" placeholder="Expiration Date" />
+              <input type="text" placeholder="CVV" />
+            </div>
+          </div>
+        )}
       </div>
-
-      <div className="profile-item">
-        <label className="profile-label">Email</label>
-        <div className="profile-value">{profile.email || 'Not provided'}</div>
-      </div>
-
-      <button className="logout-button" onClick={handleLogout}>
-        Logout
-      </button>
     </div>
   );
 }
