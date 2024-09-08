@@ -35,7 +35,8 @@
 
 .account-settings, .billing {
   max-width: 800px;
-  margin: auto;
+  margin-left: 150px;
+  margin-top: 50px;
 }
 
 .section-header {
@@ -51,7 +52,7 @@
 
 .profile-label {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   display: block; /* Ensure label takes full width */
 }
 
@@ -99,19 +100,19 @@
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logout-button {
-  padding: 12px 24px;
+  padding: 12px 20px;
   margin-top: 30px;
   background-color: #0000CD;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   transition: background-color 0.3s ease;
 }
 
