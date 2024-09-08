@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
 
@@ -46,6 +47,10 @@ function Profile() {
     window.location.href = '/';
   };
 
+  const handleBack = () => {
+    window.location.href = '/';
+};
+
   return (
     <div className="profile-container">
       <div className="menu">
@@ -76,16 +81,18 @@ function Profile() {
             <form className="profile-form">
               <div className="profile-item">
                 <label className="profile-label">Name</label>
-                <input type="text" value={profile.name || 'Example User'}  />
+                <input type="text" value={profile.name}  />
               </div>
               <div className="profile-item">
                 <label className="profile-label">Email</label>
-                <input type="email" value={profile.email || 'user@example.com'}  />
+                <input type="email" value={profile.email}  />
               </div>
             </form>
+            <div style = {{textAlign: 'left'}}>
             <button className="logout-button" onClick={handleLogout}>
               Logout
             </button>
+            </div>
           </div>
         ) : (
           <div className="billing">
@@ -97,6 +104,11 @@ function Profile() {
               <input type="text" placeholder="Expiration Date" />
               <input type="text" placeholder="CVV" />
             </div>
+            <div style = {{textAlign: 'right'}}>
+            <button className="back-button" onClick={handleBack}>
+              Back
+            </button>
+            </div>
           </div>
         )}
       </div>
@@ -105,4 +117,3 @@ function Profile() {
 }
 
 export default Profile;
-

@@ -26,7 +26,7 @@ function SignIn() {
       const data = await response.json();
       setSuccess('Sign-in successful!');
       localStorage.setItem('token', data.token);
-      
+
       setEmail('');
       setPassword('');
       setError('');

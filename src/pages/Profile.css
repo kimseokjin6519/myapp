@@ -1,3 +1,4 @@
+
 .profile-container {
   display: flex;
   font-family: Arial, sans-serif;
@@ -117,6 +118,22 @@
 }
 
 .logout-button:hover {
+  background-color: #00008B;
+}
+
+.back-button {
+  padding: 12px 20px;
+  margin-top: 30px;
+  background-color: #0000CD;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
   background-color: #00008B;
 }
 
