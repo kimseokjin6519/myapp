@@ -7,16 +7,12 @@ import VideoPlayer from './pages/VideoPlayer';
 
 function App() {
   return (
-
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-	<Route path="/signin" element={<Signin />} />
+	      <Route path="/signin" element={<Signin />} />
         <Route path="/profile" element={<Profile />} />
-         <Route path="/video/:videoID" element={<VideoPlayer />} />
-
-        {/* You can add more routes here */}
-
+        <Route path="/video/:videoID" element={<VideoPlayer />} />
       </Routes>
     </Router>
   );

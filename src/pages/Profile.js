@@ -65,6 +65,7 @@ function Profile() {
         {activeTab === 'account' ? (
           <div className="account-settings">
             <h1 className="section-header">Account Settings</h1>
+            
             <div className="profile-item">
               <label className="profile-label">Profile Picture</label>
               <div className="profile-picture-container">
@@ -78,28 +79,29 @@ function Profile() {
                 )}
               </div>
             </div>
-            <form className="profile-form">
-              <div className="profile-item">
-                <label className="profile-label">Name</label>
-                <input type="text" value={profile.name}  />
+          
+            <div className="profile-form">
+              <form className="profile-form">
+                <div className="profile-item">
+                  <label className="profile-label">Name</label>
+                  <input style={{ width: '100%', boxSizing: 'border-box' }} type="text" value={profile.name}  />
+                </div>
+                <div className="profile-item">
+                  <label className="profile-label">Email</label>
+                  <input style={{ width: '100%', boxSizing: 'border-box' }} type="email" value={profile.email}  />
+                </div>
+              </form>
+              <div style = {{textAlign: 'right'}}>
+                  <button className="logout-button" onClick={handleLogout}>Logout</button>
               </div>
-              <div className="profile-item">
-                <label className="profile-label">Email</label>
-                <input type="email" value={profile.email}  />
-              </div>
-            </form>
-            <div style = {{textAlign: 'left'}}>
-            <button className="logout-button" onClick={handleLogout}>
-              Logout
-            </button>
             </div>
           </div>
+
         ) : (
           <div className="billing">
             <h1 className="section-header">Billing and Payment</h1>
             <div className="payment-placeholder">
-              {/* Placeholder for payment system */}
-              <p>Payment System Placeholder</p>
+              <p>Automated Payment System Placeholder</p>
               <input type="text" placeholder="Credit Card Number" />
               <input type="text" placeholder="Expiration Date" />
               <input type="text" placeholder="CVV" />

@@ -1,7 +1,7 @@
-
 .profile-container {
   display: flex;
   font-family: Arial, sans-serif;
+  min-height: 80vh;
 }
 
 .menu {
@@ -24,9 +24,8 @@
   transition: background-color 0.3s ease;
 }
 
-.menu button.active, .menu button:hover {
+.menu button:hover {
   background-color: #e0e0e0;
-  font-weight: bold;
 }
 
 .content {
@@ -35,7 +34,7 @@
 }
 
 .account-settings, .billing {
-  max-width: 800px;
+  max-width: 500px;
   margin-left: 150px;
   margin-top: 50px;
 }
@@ -48,13 +47,15 @@
 }
 
 .profile-item {
-  margin-bottom: 20px; /* Adjusted for spacing */
+  margin-bottom: 20px;
+  max-width: 500px;
+  margin-left: 0px;
 }
 
 .profile-label {
   font-weight: bold;
   font-size: 14px;
-  display: block; /* Ensure label takes full width */
+  display: block;
 }
 
 .profile-picture-container {
@@ -88,7 +89,6 @@
   display: flex;
   flex-direction: column;
   max-width: 500px;
-  margin: left;
 }
 
 .profile-form .profile-item {

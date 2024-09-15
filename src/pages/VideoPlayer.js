@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './VideoPlayer.css';
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL; // Ensure this is correctly set
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function VideoPlayer() {
-  const { videoID } = useParams(); // Extract videoID from URL
+  const { videoID } = useParams();
   const [videoData, setVideoData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,18 +17,16 @@ function VideoPlayer() {
         if (response.ok) {
           const data = await response.json();
           setVideoData(data);
-        } else {
-          throw new Error('Video not found');
-        }
+        } else throw new Error('Video not found');
       } catch (error) {
-        setError(error.message);
-      } finally {
+          setError(error.message);
+        }
+      finally {
         setLoading(false);
       }
     };
-
-    fetchVideoData();
-  }, [videoID]);
+    fetchVideoData();}, [videoID]
+  );
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;

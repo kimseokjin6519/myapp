@@ -1,8 +1,9 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css';
 import defaultProfilePic from '../assets/images/default_profile.jpg';
 import youtubeLogo from '../assets/images/youtube-logo.png';
+import './Home.css';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -11,6 +12,11 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [profilePicture, setProfilePicture] = useState(defaultProfilePic);
+
+  useEffect(() => {
+    checkAuthStatus();
+    fetchVideos();
+  }, []);
 
   const fetchVideos = async (searchQuery = '') => {
     try {
@@ -28,7 +34,6 @@ function Home() {
       setIsLoggedIn(false);
       return;
     }
-
     try {
       const response = await fetch(`${backendUrl}/api/auth-status`, {
         headers: {
@@ -39,23 +44,16 @@ function Home() {
       if (response.ok) {
         const data = await response.json();
         setIsLoggedIn(data.authenticated);
-
-        if (data.authenticated && data.profile_picture) {
+        if (data.authenticated && data.profile_picture)
           setProfilePicture(data.profile_picture);
-        }
-      } else {
-        setIsLoggedIn(false);
-      }
+        } else
+          setIsLoggedIn(false);
+
     } catch (error) {
       console.error('Error checking authentication status:', error);
       setIsLoggedIn(false);
     }
   };
-
-  useEffect(() => {
-    checkAuthStatus();
-    fetchVideos();
-  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -74,7 +72,7 @@ function Home() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit">Search</button>
+        <button style = {{height: '26px'}} type="submit">Search</button>
         </form>
         <div className="header__icons">
           {isLoggedIn ? (
@@ -87,7 +85,7 @@ function Home() {
             </Link>
           ) : (
             <Link to="/signin">
-              <button>Sign In</button>
+              <button style = {{}}>Sign In</button>
             </Link>
           )}
         </div>
